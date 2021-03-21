@@ -7,17 +7,13 @@ const client = new tmi.Client({
     reconnect: true,
   },
   identity: {
-    username: 'delicinhabot',
+    username: process.env.BOT_USERNAME,
     password: process.env.TWITCH_OATH_TOKEN,
   },
   channels: ['heydelicias']
 });
 
-const gameStatus = {
-  word: 'franquia',
-}
-
-client.connect()
+client.connect();
 
 client.on('message', (channel, tags, message, self) => {
   if (message.toLocaleLowerCase() === 'franquia') {
