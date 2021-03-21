@@ -5,5 +5,6 @@ Project loads commands from independant modules
 #### Environment
 | Key | Description |
 |-----|:------|
-|TWITCH_OATH_TOKEN | Reach for [https://twitchapps.com/tmi](https://twitchapps.com/tmi)
+|TWITCH_OATH_TOKEN | Reach for [https://twitchapps.com/tmi](https://twitchapps.com/tmi) |
+|BOT_USERNAME | Your bot name, can be your own username |
 
