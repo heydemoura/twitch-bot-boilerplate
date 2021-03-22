@@ -1,6 +1,8 @@
 const tmi = require('tmi.js');
 require('dotenv').config();
 
+const commands = require('./commands');
+
 const client = new tmi.Client({
   connection: {
     secure: true,
@@ -16,14 +18,14 @@ const client = new tmi.Client({
 client.connect();
 
 client.on('message', (channel, tags, message, self) => {
-  if (message.toLocaleLowerCase() === 'franquia') {
-    client.say(channel, `@${tags.username} acertou!`);
-  } 
-
   if (self || !message.startsWith('!')) return;
 
   const args = message.slice(1).split(' ');
   const command = args.shift().toLowerCase();
+
+  if (commands[`!${command}`]) {
+    commands[`!${command}`].init(client, channel, tags, message, self);
+  }
 
   if(message.toLowerCase() === "!hello") {
     client.say(channel, `@${tags.username}, bem vindo!`);
